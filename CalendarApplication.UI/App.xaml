@@ -1,0 +1,31 @@
+﻿<Application x:Class="CalendarApplication.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CalendarApplication.UI"
+             Startup="Application_Startup"
+             DispatcherUnhandledException="Application_DispatcherUnhandledException">
+    <Application.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <AdornedElementPlaceholder x:Name="placeholder"/>
+                            <TextBlock FontSize="12" Foreground="Red" Text="{Binding ElementName=placeholder,
+                                Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>                            
+                            <!--<TextBlock FontSize="12" Foreground="Red" Text="Nazwa wydarzenia nie może być pusta"/>-->
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">                    
+                    <Setter Property="Background" Value="Red"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="ToolTip" Value="Wydarzenie musi mieć dobrą nazwę, nie za krótką i nie za długą"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>
