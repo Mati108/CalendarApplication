@@ -1,4 +1,5 @@
 ﻿using Prism.Events;
+using System;
 
 namespace CalendarApplication.UI.Event
 {
@@ -9,5 +10,6 @@ namespace CalendarApplication.UI.Event
     {
         public int Id { get; set; }
         public string DisplayIncident { get; set; }
+        public DateTime DisplayDate { get; set; }
     }
 }

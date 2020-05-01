@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CalendarApplication.UI.View" 
              xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="600">
+             d:DesignHeight="450" d:DesignWidth="600" Name="UI">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,22 +14,46 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>            
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />       
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Nazwa" Margin="60 10 10 0"/>
+        <Label Content="Nazwa" Margin="60 0 10 0"/>
         <TextBox Grid.Row="1" Text="{Binding Incident.Title,
-                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="60 0 20 10"/>
+                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="60 0 20 15"/>
 
         <Label Grid.Row="2" Content="Data rozpoczęcia" Margin="60 0"/>
         <toolkit:DateTimePicker Grid.Row="3" Value="{Binding Incident.DateStart,
-                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="60 0 20 10"/>
+                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="60 0 20 10" Foreground="WhiteSmoke"/>
 
         <Label Grid.Row="4" Content="Data zakończenia" Margin="60 0"/>
         <toolkit:DateTimePicker Grid.Row="5" Value="{Binding Incident.DateStop,
-                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="60 0 20 10"/>
-        <StackPanel Grid.Row="7" Orientation="Horizontal">
+                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="60 0 20 10" Foreground="WhiteSmoke"/>
+
+        <Label Content="Pogoda na dziś" Width="130" Height="Auto" Grid.Row="6" Margin="300 0 0 0" FontSize="18" />
+        <TextBox KeyDown="txtCityName_KeyDown" Name="txtCityName" Width="220" Height="Auto" Grid.Row="7" Margin="325 0 0 0" FontSize="18" />
+        <TextBlock Grid.Row="7" IsHitTestVisible="False" Text="Wpisz miasto i naciśnij enter" Margin="365 5 0 0" FontSize="17" Foreground="Gray">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=txtCityName}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Image Name="icon" Grid.Row="8" Height="100" Margin="325 0 0 0" />
+        <Label Name="lblCityAndCountry" Width="auto" Height="Auto" Grid.Row="9" Margin="410 0 0 0" FontSize="18" />
+        <Label Name="lblWeather" Width="auto" Height="Auto" Grid.Row="10" Margin="415 0 0 0" FontSize="18" />
+        <Label Name="lblWeatherDescription" Width="auto" Height="Auto" Grid.Row="11" Margin="375 0 0 0" FontSize="17" />
+
+        <StackPanel Grid.Row="12" Orientation="Horizontal">
             <Button Content="Zapisz" Width="125" Margin="60 10 10 20"
                     Command="{Binding SaveCommand}"/>
             <Button Content="Usuń" Width="125" Margin="0 10 0 20"

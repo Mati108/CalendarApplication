@@ -1,17 +1,20 @@
-﻿<Window x:Class="CalendarApplication.UI.MainWindow"
+﻿<Controls:MetroWindow x:Class="CalendarApplication.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:CalendarApplication.UI"
         xmlns:view="clr-namespace:CalendarApplication.UI.View"
         xmlns:viewModel="clr-namespace:CalendarApplication.UI.ViewModel"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="Kalendarz" Height="600" Width="800" FontSize="20"
         WindowStartupLocation="CenterScreen">
+
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:IncidentDetailViewModel}">
-            <view:IncidentDetailView/>
+            <view:IncidentDetailView/>            
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -20,17 +23,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="230"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Menu Grid.ColumnSpan="2" FontSize="20">
-            <MenuItem Header="Stwórz">
-                <MenuItem Header="Nowe wydarzenie" Command="{Binding CreateNewIncidentCommand}"/>
-            </MenuItem>
+        <Menu Grid.ColumnSpan="2" FontSize="20">      
+                <MenuItem Header="Stwórz nowe wydarzenie" Command="{Binding CreateNewIncidentCommand}"/>          
         </Menu>
         <view:NavigationView Grid.Row="1"
                                  DataContext="{Binding NavigationViewModel}"/>
         <ContentControl Grid.Row="1"
-                               Content="{Binding IncidentDetailViewModel}" Grid.ColumnSpan="2" Margin="150,0,-0.4,0"/>
+                               Content="{Binding IncidentDetailViewModel}" Grid.ColumnSpan="2" Margin="185,0,0,0"/>
     </Grid>
-</Window>
+</Controls:MetroWindow>
+
+    

@@ -48,7 +48,7 @@ namespace CalendarApplication.UI.ViewModel
         }
         private async void OnDeleteExecute()
         {
-            var result = _messageDialogService.ShowOkCancelDialog($"Zmiana planów? Naprawdę chcesz usunąć wydarzenie {Incident.Title}?",
+            var result = await _messageDialogService.ShowOkCancelDialogAsync($"Zmiana planów? Naprawdę chcesz usunąć wydarzenie {Incident.Title}?",
                 "Pytanko");
             if (result == MessageDialogResult.OK)
             {
@@ -65,7 +65,8 @@ namespace CalendarApplication.UI.ViewModel
                 new AfterIncidentSavedEventArgs
                 {
                     Id = Incident.Id,
-                    DisplayIncident = $"{Incident.Title}"
+                    DisplayIncident = $"{Incident.Title}",
+                    DisplayDate = Incident.DateStart,                   
                 });
 
         }

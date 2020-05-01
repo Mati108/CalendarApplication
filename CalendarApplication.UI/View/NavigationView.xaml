@@ -13,7 +13,8 @@
         </Style>
         <DataTemplate x:Key="NaviItemTemplate">
             <Button Content="{Binding DisplayIncident}"
-                            Command="{Binding OpenIncidentDetailViewCommand}">
+                            Command="{Binding OpenIncidentDetailViewCommand}"
+                    FontSize="18">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid x:Name="grid">
@@ -38,12 +39,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="525"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Wydarzenia">
+        <GroupBox Header="Zbiór wydarzeń">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
                 <ItemsControl ItemsSource="{Binding Incidents}" 
                           ItemContainerStyle="{StaticResource NaviIncidentContainerStyle}"
-                          ItemTemplate="{StaticResource NaviItemTemplate}"/>
+                          ItemTemplate="{StaticResource NaviItemTemplate}"
+                              Margin="10"/>
             </ScrollViewer>
         </GroupBox>
     </Grid>

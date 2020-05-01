@@ -41,7 +41,7 @@ namespace CalendarApplication.UI.ViewModel
         {
             if (IncidentDetailViewModel != null && IncidentDetailViewModel.HasChanges)
             {
-                var result = _messageDialogService.ShowOkCancelDialog("Poczyniłeś pewne zmiany w wydarzeniu, które nie zostaną zapisane. Na pewno chcesz porzucić to wydarzenie?", "Pytanko");
+                var result = await _messageDialogService.ShowOkCancelDialogAsync("Poczyniłeś pewne zmiany w wydarzeniu, które nie zostaną zapisane. Na pewno chcesz porzucić to wydarzenie?", "Pytanko");
                 if (result == MessageDialogResult.Anuluj)
                 {
                     return;

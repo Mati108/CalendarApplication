@@ -1,7 +1,9 @@
-﻿namespace CalendarApplication.UI.View.Services
+﻿using System.Threading.Tasks;
+
+namespace CalendarApplication.UI.View.Services
 {
     public interface IMessageDialogService
     {
-        MessageDialogResult ShowOkCancelDialog(string text, string title);
+        Task<MessageDialogResult> ShowOkCancelDialogAsync(string text, string title);
     }
 }

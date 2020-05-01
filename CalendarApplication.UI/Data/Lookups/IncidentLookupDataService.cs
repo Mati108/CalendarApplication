@@ -19,13 +19,14 @@ namespace CalendarApplication.UI.Data
         {
             using (var ctx = _contextCreator())
             {
-                return await ctx.Incidents.AsNoTracking()
+                return await ctx.Incidents.AsNoTracking()       
                     .Select(i =>
                     new LookupItem
                     {
                         Id = i.Id,
-                        DisplayIncident = i.Title
-                    })
+                        DisplayIncident = i.Title,
+                        DisplayDate = i.DateStart,             
+                    })        
                     .ToListAsync();
             }
         }

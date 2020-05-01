@@ -1,4 +1,5 @@
 ﻿using CalendarApplication.UI.ViewModel;
+using MahApps.Metro.Controls;
 using System.Windows;
 
 namespace CalendarApplication.UI
@@ -6,7 +7,7 @@ namespace CalendarApplication.UI
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         private MainViewModel _viewModel;
         public MainWindow(MainViewModel viewModel)
