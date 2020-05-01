@@ -1,11 +1,8 @@
-﻿using CalendarApplication.Model;
-using CalendarApplication.UI.Data;
-using CalendarApplication.UI.Event;
+﻿using CalendarApplication.UI.Event;
 using CalendarApplication.UI.View.Services;
 using Prism.Commands;
 using Prism.Events;
 using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
